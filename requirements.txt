@@ -1,0 +1,9 @@
+gymnasium[box2d]
+numpy
+matplotlib
+torch
+tqdm
+pillow
+imageio
+ipywidgets
+jupyter
