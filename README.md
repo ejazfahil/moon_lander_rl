@@ -30,3 +30,31 @@ python train.py --algo dueling_dqn --episodes 500
 
 ## 📄 License
 MIT
+
+## 🏗️ Architecture
+
+```
+State (8D) → FC(256) → ReLU → FC(256) → ReLU → Q-values (4D)
+```
+
+Dueling DQN splits the final layer:
+```
+... → FC(256) → ReLU → Value Stream V(s)
+                      → Advantage Stream A(s,a)
+                      → Q(s,a) = V(s) + A(s,a) - mean(A)
+```
+
+## 📁 Project Structure
+
+```
+moon_lander_rl/
+├── src/
+│   ├── replay_buffer.py
+│   ├── config.py
+│   ├── metrics.py
+│   ├── epsilon_scheduler.py
+│   └── normalizer.py
+├── tests/
+├── .github/workflows/ci.yml
+└── README.md
+```
