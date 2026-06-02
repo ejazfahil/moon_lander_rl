@@ -58,3 +58,6 @@ moon_lander_rl/
 ├── .github/workflows/ci.yml
 └── README.md
 ```
+
+
+> **Latest**: Prioritized Replay + Dueling DQN solves at episode 381 (avg reward 244.8)
