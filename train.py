@@ -148,7 +148,10 @@ class DQNAgent:
     
     def load_checkpoint(self, filepath):
         """Load model checkpoint"""
-        checkpoint = torch.load(filepath, map_location=device)
+        # weights_only=False: these checkpoints predate PyTorch 2.6's stricter
+        # default and contain plain numpy scalars in the scores list, not just
+        # tensors. Safe here since the checkpoints are this repo's own output.
+        checkpoint = torch.load(filepath, map_location=device, weights_only=False)
         self.qnetwork.load_state_dict(checkpoint['qnetwork_state_dict'])
         self.target_network.load_state_dict(checkpoint['target_network_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
